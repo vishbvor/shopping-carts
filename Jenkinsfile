@@ -4,27 +4,27 @@ pipeline{
 
 // uncomment the following lines by removing /* and */ to enable
     tools{
-       nodejs 'nodejs' 
+       maven 'maven' 
     }
-    
+   
 
     stages{
-        stage('compile-app'){
+        stage('build'){
             steps{
-                echo 'this is the compile job'
-                sh 'npm install'
+                echo 'this is the build job'
+                sh 'mvn compile'
             }
         }
-        stage('test-app'){
+        stage('test'){
             steps{
                 echo 'this is the test job'
-                sh 'npm test'
+                sh 'mvn clean test'
             }
         }
-        stage('package-app'){
+        stage('package'){
             steps{
                 echo 'this is the package job'
-                sh 'npm run package'
+                sh 'mvn package -DskipTests'
             }
         }
     }
@@ -35,5 +35,10 @@ pipeline{
         }
         
     }
+<<<<<<< HEAD:Jenkinsfile
     
+=======
+
+  }
+>>>>>>> 456c002d9a827223dbd63b0ec71f7678a755c6b8:Jenkinsfile-template
 }
